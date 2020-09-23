@@ -1,0 +1,12 @@
+E:\Project\VS\MailSender\bin\Release\MailSender.exe.config
+E:\Project\VS\MailSender\bin\Release\MailSender.exe
+E:\Project\VS\MailSender\bin\Release\MailSender.pdb
+E:\Project\VS\MailSender\obj\Release\MailSender.csprojAssemblyReference.cache
+E:\Project\VS\MailSender\obj\Release\MailSender.MailSenderForm.resources
+E:\Project\VS\MailSender\obj\Release\MailSender.Properties.Resources.resources
+E:\Project\VS\MailSender\obj\Release\MailSender.csproj.GenerateResource.cache
+E:\Project\VS\MailSender\obj\Release\MailSender.csproj.CoreCompileInputs.cache
+E:\Project\VS\MailSender\obj\Release\MailSender.exe
+E:\Project\VS\MailSender\obj\Release\MailSender.pdb
+E:\Project\VS\MailSender\bin\Release\OpenPop.dll
+E:\Project\VS\MailSender\obj\Release\MailSender.csproj.CopyComplete
