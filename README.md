@@ -9,10 +9,10 @@
 Update 20.10.2020 - Добавлены сообщения об ошибках SMTP доставки письма
 
 Скриншот первичного запуска приложения:
-![](https://github.com/umanets-alexander/MailSender/img/1.png)
+![](https://github.com/umanets-alexander/MailSender/blob/master/img/1.png)
 
 Скриншот программы после массовой рассылки с одного аккаунта с сообщениями об ошибке SMTP, обратите внимания, здесь 3 ящика-адресатов несуществующие:
-![](https://github.com/umanets-alexander/MailSender/img/2.png)
+![](https://github.com/umanets-alexander/MailSender/blob/master/img/2.png)
 
 По мере возможностей апдейт программы будет продолжаться, есть ещё идеи для реализации в эту программу.
 
