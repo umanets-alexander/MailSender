@@ -678,6 +678,8 @@ namespace MailSender
                 save_param(); //сохраняем все параметры при остутствии ошибок
                 int i = 0; //счётчик всех писем
                 int turn = 1; //счётчик очереди
+                int StatusCode; //сообщение об ошибке числовой
+                string StatusMessage; //текстовое сообщение статуса доставки
                 string s = txt_send_mail.Text;
                 string[] split = s.Split('\n');
                 foreach (string adr in split)
@@ -694,19 +696,24 @@ namespace MailSender
                         client.Credentials = new System.Net.NetworkCredential(txt_email_1.Text, txt_password_1.Text);
                         client.EnableSsl = check_ssl_1.Checked;
                         i += 1;
-                        if (i == 1)
-                        {
-                            txt_result_mail.Text = "Разослано 1 адресату";
-                        }
-                        else txt_result_mail.Text = "Разослано " + i + " адресатам";
                         try
                         {
                             client.Send(mail);
                             Thread.Sleep(Int16.Parse(txt_time_send.Text) * 1000);
                         }
-                        catch (Exception ex)
+                        catch (SmtpFailedRecipientException rx)
                         {
-                            MessageBox.Show("Ошибка: " + ex.Message);
+                            StatusCode = (int)rx.StatusCode;
+                            StatusMessage = rx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
+                        }
+                        catch (SmtpException sx)
+                        {
+                            StatusCode = (int)sx.StatusCode;
+                            StatusMessage = sx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
                         }
                     }
                     else if (all_account == 2) //если 2 аккаунта, то рассылка с двух
@@ -744,9 +751,19 @@ namespace MailSender
                                 Thread.Sleep(Int16.Parse(txt_time_send.Text) * 1000);
                             }
                         }
-                        catch (Exception ex)
+                        catch (SmtpFailedRecipientException rx)
                         {
-                            MessageBox.Show("Ошибка: " + ex.Message);
+                            StatusCode = (int)rx.StatusCode;
+                            StatusMessage = rx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
+                        }
+                        catch (SmtpException sx)
+                        {
+                            StatusCode = (int)sx.StatusCode;
+                            StatusMessage = sx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
                         }
                     }
                     else if (all_account == 3) //если 3 аккаунта, то рассылка с трёх
@@ -796,9 +813,19 @@ namespace MailSender
                                 Thread.Sleep(Int16.Parse(txt_time_send.Text) * 1000);
                             }
                         }
-                        catch (Exception ex)
+                        catch (SmtpFailedRecipientException rx)
                         {
-                            MessageBox.Show("Ошибка: " + ex.Message);
+                            StatusCode = (int)rx.StatusCode;
+                            StatusMessage = rx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
+                        }
+                        catch (SmtpException sx)
+                        {
+                            StatusCode = (int)sx.StatusCode;
+                            StatusMessage = sx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
                         }
                     }
                     else if (all_account == 4) //если 4 аккаунта, то рассылка с четырёх
@@ -860,9 +887,19 @@ namespace MailSender
                                 Thread.Sleep(Int16.Parse(txt_time_send.Text) * 1000);
                             }
                         }
-                        catch (Exception ex)
+                        catch (SmtpFailedRecipientException rx)
                         {
-                            MessageBox.Show("Ошибка: " + ex.Message);
+                            StatusCode = (int)rx.StatusCode;
+                            StatusMessage = rx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
+                        }
+                        catch (SmtpException sx)
+                        {
+                            StatusCode = (int)sx.StatusCode;
+                            StatusMessage = sx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
                         }
                     }
                     else if (all_account == 5) //если 5 аккаунтов, то рассылка с пятёрых
@@ -936,12 +973,27 @@ namespace MailSender
                                 Thread.Sleep(Int16.Parse(txt_time_send.Text) * 1000);
                             }
                         }
-                        catch (Exception ex)
+                        catch (SmtpFailedRecipientException rx)
                         {
-                            MessageBox.Show("Ошибка: " + ex.Message);
+                            StatusCode = (int)rx.StatusCode;
+                            StatusMessage = rx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
+                        }
+                        catch (SmtpException sx)
+                        {
+                            StatusCode = (int)sx.StatusCode;
+                            StatusMessage = sx.Message;
+                            i--;
+                            txt_result_mail.Text += "\n" + "\nПочтовой ящик: " + adr + "\nИмеет кодовую ошибку: " + StatusCode + "\nОписание кодовой ошибки: " + StatusMessage + "\n-------------------";
                         }
                     }
                 }
+                if (i == 1)
+                {
+                    txt_result_mail.Text += "\nРазослано 1 адресату";
+                }
+                else txt_result_mail.Text += "\nРазослано " + i + " адресатам";
             }
         }
 
